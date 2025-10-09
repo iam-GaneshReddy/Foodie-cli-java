@@ -1,5 +1,6 @@
 package com.trainingMug.foodiecli.repository;
 
+import com.trainingMug.foodiecli.model.Dish;
 import com.trainingMug.foodiecli.model.Restaurant;
 import com.trainingMug.foodiecli.util.CsvReader;
 
@@ -25,10 +26,9 @@ public class RestaurantRepository {
                 filter(restaurant->restaurant.getId().equals(id)).findFirst();
 
     }
-    public Restaurant removeRestaurant(Restaurant restaurant)
+    public void deleteRestaurant(Restaurant restaurant)
     {
         restaurantList.remove(restaurant);
-        return restaurant;
     }
     public Restaurant updateRestaurant(Restaurant restaurantToBeUpdated){
         Optional<Restaurant> optionalRestaurant = restaurantList.stream()
@@ -43,5 +43,9 @@ public class RestaurantRepository {
 
                 );
       return  optionalRestaurant.orElse(null);
+    }
+    public List<String> getAllDishItems(String id){
+        Optional<List<String>> optional=restaurantList.stream().filter(restaurant->restaurant.getId().equals(id)).findFirst().map(Restaurant::getMenu);
+        return optional.get();
     }
 }
