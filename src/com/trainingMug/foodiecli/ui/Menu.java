@@ -21,7 +21,7 @@ public class Menu {
                 int input = scanner.nextInt();
                 switch (input) {
                     case 1 -> new CustomerMenu().displayMenu();
-                   // case 2 -> new RestaurantsMenu().displayMenu();
+                   case 2 -> new RestaurantsMenu().displayMenu();
                    case 3 -> new DishesMenu().displayMenu();
                    // case 4 -> new OrdersMenu().displayMenu();
                     case 5 -> {
