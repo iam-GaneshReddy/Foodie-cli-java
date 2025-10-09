@@ -64,7 +64,6 @@ public class DishesMenu extends Menu{
             displayMenu();
         }
     }
-
     public void dishUpdateForm() {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -82,7 +81,6 @@ public class DishesMenu extends Menu{
                     .setName(name)
                     .setDescription(description)
                     .setPrice(price);
-
             Dish updatedDish = dishController.updateDish(dish);
             System.out.println("Dish Updated Successfully");
             displayDish(updatedDish);
@@ -94,7 +92,6 @@ public class DishesMenu extends Menu{
             dishUpdateForm();
         }
     }
-
     public void dishSearchForm() {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -146,7 +143,6 @@ public class DishesMenu extends Menu{
             System.out.printf("%-10s %-30s %-80s %-10s\n", dish.getId(), dish.getName(), dish.getDescription(), String.format("$%.2f", dish.getPrice()));
         });
     }
-
     public void displayDish(Dish dish) {
         displayMenuHeader("Dish Details");
         System.out.printf("%-10s %-30s %-80s %-10s\n", "Id", "Name", "Description", "Price");
