@@ -2,6 +2,7 @@ package com.trainingMug.foodiecli.repository;
 
 import com.trainingMug.foodiecli.model.Dish;
 import com.trainingMug.foodiecli.util.CsvReader;
+import com.trainingMug.foodiecli.util.Factory;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,11 +11,12 @@ public class DishRepository {
     private List<Dish> dishList;
 
     public DishRepository(){
-        CsvReader csvReader = new CsvReader();
-        dishList=csvReader.readDishesFromCSV();
+       // CsvReader csvReader = new CsvReader();
+        dishList= Factory.getCsvReader().readDishesFromCSV();
     }
 
     public List<Dish> getAllDishes(){
+
         return this.dishList;
     }
     public Dish addDish(Dish dish){
@@ -39,4 +41,5 @@ public class DishRepository {
                 });
         return dishOptional.orElse(null);
     }
+
 }
