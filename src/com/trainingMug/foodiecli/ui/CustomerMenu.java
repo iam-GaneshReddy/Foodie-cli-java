@@ -3,6 +3,7 @@ package com.trainingMug.foodiecli.ui;
 import com.trainingMug.foodiecli.controller.CustomerController;
 import com.trainingMug.foodiecli.exceptions.CustomerNotFoundException;
 import com.trainingMug.foodiecli.model.Customer;
+import com.trainingMug.foodiecli.service.CustomerServiceImpl;
 import com.trainingMug.foodiecli.util.Factory;
 import com.trainingMug.foodiecli.exceptions.CustomerExistException;
 
@@ -107,6 +108,7 @@ public class CustomerMenu extends Menu {
             System.out.println("Enter Password");
             String password = scanner.nextLine();
             Customer existingCustomer = customerController.validateCustomerLogin(email, password);
+            Factory.getCustomerService().setCurrentLoggedInCustomer(existingCustomer);
             System.out.println("Login Success :");
             System.out.println("Welcome Mr : " + existingCustomer.getName());
         } catch (CustomerNotFoundException e) {
