@@ -2,13 +2,16 @@ package com.trainingMug.foodiecli.util;
 
 import com.trainingMug.foodiecli.controller.CustomerController;
 import com.trainingMug.foodiecli.controller.DishController;
+import com.trainingMug.foodiecli.controller.OrderController;
 import com.trainingMug.foodiecli.controller.RestaurantController;
 import com.trainingMug.foodiecli.model.Restaurant;
 import com.trainingMug.foodiecli.repository.CustomerRepository;
 import com.trainingMug.foodiecli.repository.DishRepository;
+import com.trainingMug.foodiecli.repository.OrderRepository;
 import com.trainingMug.foodiecli.repository.RestaurantRepository;
 import com.trainingMug.foodiecli.service.CustomerServiceImpl;
 import com.trainingMug.foodiecli.service.DishServiceImpl;
+import com.trainingMug.foodiecli.service.OrderServiceImpl;
 import com.trainingMug.foodiecli.service.RestaurantServiceImpl;
 
 public class Factory {
@@ -46,6 +49,16 @@ public class Factory {
     }
     public static RestaurantController getRestaurantController(){
         return new RestaurantController(getRestaurantService());
+    }
+
+    public static OrderRepository getOrderRepository(){
+        return new OrderRepository();
+    }
+    public static OrderServiceImpl getOrderService(){
+        return new OrderServiceImpl(getOrderRepository());
+    }
+    public static OrderController getOrderController(){
+        return new OrderController(getOrderService());
     }
 
 }
