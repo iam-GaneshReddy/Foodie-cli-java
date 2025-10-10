@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService{
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private Customer currentLoggedInCustomer;
     public CustomerServiceImpl(CustomerRepository customerRepository)
     {
         this.customerRepository=customerRepository;
@@ -25,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer validateEmailPassword(String email, String password) throws CustomerNotFoundException {
         Optional<Customer> optionalCustomer=customerRepository.validateEmailPassword(email,password);
         if(optionalCustomer.isEmpty())
-            throw new CustomerNotFoundException("customer not found please login");
+            throw new CustomerNotFoundException("customer not found please login please enter correct details");
         return optionalCustomer.get();
     }
     @Override
@@ -56,5 +57,12 @@ public class CustomerServiceImpl implements CustomerService{
         else
             customerRepository.deleteCustomer(optional.get());
     }
+    public void setCurrentLoggedInCustomer(Customer customer) {
+        this.currentLoggedInCustomer = customer;
+    }
 
+
+    public Customer getCurrentLoggedInCustomer() {
+        return this.currentLoggedInCustomer;
+    }
 }
