@@ -19,7 +19,7 @@ public class RestaurantController {
         return restaurant;
     }
     public Restaurant getRestaurantById(String id) throws RestaurantNotFoundException {
-        return this.restaurantService.searchRestaurant(id);
+        return this.restaurantService.getRestaurantById(id);
     }
     public List<Restaurant> getAllRestaurants(){
         return restaurantService.getRestaurantList();
@@ -28,7 +28,7 @@ public class RestaurantController {
         return restaurantService.updateRestaurant(toBeUpdated);
     }
     public Restaurant searchRestaurant(String id) throws RestaurantNotFoundException {
-        return restaurantService.searchRestaurant(id);
+        return restaurantService.getRestaurantById(id);
     }
     public void deleteRestaurant(String id) throws RestaurantNotFoundException {
         restaurantService.deleteRestaurant(id);
