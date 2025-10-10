@@ -41,7 +41,7 @@ public class RestaurantServiceImpl implements RestaurantService{
     }
 
     @Override
-    public Restaurant searchRestaurant(String id) throws RestaurantNotFoundException {
+    public Restaurant getRestaurantById(String id) throws RestaurantNotFoundException {
         Optional<Restaurant> optional=restaurantRepository.getRestaurantById(id);
         if(optional.isEmpty())
             throw new RestaurantNotFoundException("Enter the correct Id"+id+"Not Found");
@@ -55,6 +55,7 @@ public class RestaurantServiceImpl implements RestaurantService{
             throw new RestaurantNotFoundException("Enter the correct Id"+id+"Not Found");
       restaurantRepository.deleteRestaurant(restaurantOptional.get());
     }
+
     public List<Dish> getDishItems(String id) throws RestaurantNotFoundException, DishNotFoundException {
         Optional<Restaurant> restaurantById = this.restaurantRepository.getRestaurantById(id);
         if(restaurantById.isEmpty())
